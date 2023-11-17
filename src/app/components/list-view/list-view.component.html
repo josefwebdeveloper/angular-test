@@ -1,7 +1,10 @@
 <div class="event-container">
   <div class="table-header">
     <div class="header-item color">Color</div>
-    <div class="header-item name">Name</div>
+    <div (click)="toggleSortDirection()" class="header-item name">
+      <img class="asc" src="assets/icons/sort.svg" width="15px" alt="sort">
+      Name
+    </div>
     <div class="header-item date">Create Date</div>
     <div class="header-item update">Last Update</div>
     <div class="header-item created">Created By</div>

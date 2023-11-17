@@ -24,6 +24,8 @@ export class ViewComponent implements OnChanges {
   totalItems: number = 0;
   currentItems: EventData[] = [];
   viewMode!: View;
+  sortDirection: string = '';
+
 
   constructor(
     private store: Store<IAppState>,
@@ -35,17 +37,27 @@ export class ViewComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    this.fetchData();
+    this.updateData();
   }
 
   onPageSizeChange(newSize: number) {
     this.pageSize = newSize;
     this.currentPage = 1; // Reset to first page when page size changes
-    this.fetchData();
+    this.updateData();
   }
-
-  getItems(page: number, searchQuery: string = ''): EventData[] {
-    const filteredItems = this.events.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  toggleSortDirection(direction:string) {
+    this.sortDirection = direction
+    this.updateData();
+  }
+  getItems(page: number, searchQuery: string = '', sortDirection: string): EventData[] {
+    let filteredItems = this.events.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    if (sortDirection) {
+      filteredItems = filteredItems.sort((a, b) => {
+        if (a.name < b.name) return sortDirection === 'asc' ? -1 : 1;
+        if (a.name > b.name) return sortDirection === 'asc' ? 1 : -1;
+        return 0;
+      });
+    }
     const startIndex = (page - 1) * this.pageSize;
     return filteredItems.slice(startIndex, startIndex + this.pageSize);
   }
@@ -59,21 +71,21 @@ export class ViewComponent implements OnChanges {
     return this.events.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase())).length;
   }
 
-  fetchData() {
-    this.currentItems = this.getItems(this.currentPage, this.searchControl.value);
+  updateData() {
+    this.currentItems = this.getItems(this.currentPage, this.searchControl.value, this.sortDirection);
     this.totalPages = this.getTotalPages(this.searchControl.value);
     this.totalItems = this.getTotalItems(this.searchControl.value);
   }
 
   searchControlChange(value: any) {
-    this.currentPage = 1; // Reset to first page on new search
-    this.fetchData();
+    this.currentPage = 1;
+    this.updateData();
   }
 
   changePage(newPage: number) {
     if (newPage >= 1 && newPage <= this.totalPages) {
       this.currentPage = newPage;
-      this.fetchData();
+      this.updateData();
     }
   }
 

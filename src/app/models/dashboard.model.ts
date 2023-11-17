@@ -15,3 +15,7 @@ export enum DialogMode {
   New = 'new',
   Edit = 'edit',
 }
+export enum SortDirection {
+    Ascending = 'asc',
+    Descending = 'desc',
+}

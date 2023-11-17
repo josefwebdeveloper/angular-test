@@ -9,7 +9,8 @@
     >
   </div>
   <div *ngIf="viewMode===View.List" class="list">
-    <app-list-view (updateEmitter)="updateEmitter($event)" [currentItems]="currentItems"></app-list-view>
+    <app-list-view (toggleSortDirectionEmitter)="toggleSortDirection($event)" [sortDirection]="sortDirection"
+      (updateEmitter)="updateEmitter($event)" [currentItems]="currentItems"></app-list-view>
   </div>
   <div *ngIf="viewMode===View.Tile" class="tile">
     <app-tile-view (updateEmitter)="updateEmitter($event)" [currentItems]="currentItems"></app-tile-view>
