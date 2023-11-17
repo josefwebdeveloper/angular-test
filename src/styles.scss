@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif !important;
+  background-color: #f2f6f9;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:root {
+  --grey-blue: #769aac;
+  --grey-blue-darken: #0e4f6f;
+  --blue-checked: #007af9;
+}

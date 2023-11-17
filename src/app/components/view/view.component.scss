@@ -1,0 +1,43 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .content {
+    flex: 1 0 auto;
+  }
+
+  app-paginator {
+    flex-shrink: 0;
+  }
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  border: none;
+  background-color: white;
+  height: 66px;
+  box-shadow: 0px 3px 6px #00000029;
+  margin-bottom: 25px;
+}
+
+.search-input {
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  width: 100%;
+  border-radius: 20px;
+  outline: none;
+  background: url('/assets/icons/find.svg') no-repeat scroll 8px 19px;
+  padding-left: 45px;
+  background-size: 27px;
+  color: black;
+  font-family: 'Helvetica Neue', sans-serif !important;
+
+  &::placeholder {
+    font-style: italic;
+    color: black;
+    font-weight: 300;
+  }
+}

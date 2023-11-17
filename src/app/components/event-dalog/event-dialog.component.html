@@ -1,0 +1,43 @@
+<div (click)="closeDialog()" class="close-icon-container">
+  <mat-icon class="close-icon">close</mat-icon>
+</div>
+<div class="content-container">
+  <div class="title-container">
+    <div class="title">{{ mode === dialogModeEnum.New ? 'Create New' : 'Edit' }}</div>
+  </div>
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <div class="form-content">
+      <div class="name-color-container">
+        <div class="name-container">
+          <label for="name">Name</label>
+          <input type="text"
+                 formControlName="name"
+                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+                 placeholder="Type name...">
+          <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors?.['required']">name is required</div>
+          </div>
+        </div>
+        <div class="color-container">
+          <label for="color">Color</label>
+          <ngx-colors ngx-colors-trigger style="display: inline-block; "
+                      formControlName="color"></ngx-colors>
+
+        </div>
+      </div>
+
+      <label for="createdBy">Assign By</label>
+      <textarea formControlName="createdBy"
+                [ngClass]="{ 'is-invalid': submitted && f['createdBy'].errors }"
+                placeholder="Type assign by..."></textarea>
+      <div *ngIf="submitted && f['createdBy'].errors" class="invalid-feedback">
+        <div *ngIf="f['createdBy'].errors?.['required']">createdBy is required</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="cancel" (click)="closeDialog()">Cancel</button>
+      <button type="submit">Save</button>
+    </div>
+  </form>
+</div>

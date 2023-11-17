@@ -1,0 +1,6 @@
+<div class="tile-view-container">
+
+  <div *ngFor="let item of currentItems">
+    <app-tile-event (click)="update(item)" [event]="item"/>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.paginator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+
+  button {
+    mask-repeat: no-repeat;
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    &.prev {
+      mask-image: url('/assets/icons/back-icon.svg');
+    }
+
+    &.next {
+      mask-image: url('/assets/icons/next-icon.svg');
+    }
+  }
+
+  select {
+    margin-left: 10px;
+    height: 32px;
+    padding: 7px;
+    border-radius: 6px;
+    box-shadow: 0px 3px 6px #00000029;
+
+  }
+}

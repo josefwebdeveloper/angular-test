@@ -1,0 +1,27 @@
+<div class="content">
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Find by name..."
+      class="search-input"
+      [formControl]="searchControl"
+      (ngModelChange)="searchControlChange($event)"
+    >
+  </div>
+  <div *ngIf="viewMode===View.List" class="list">
+    <app-list-view (updateEmitter)="updateEmitter($event)" [currentItems]="currentItems"></app-list-view>
+  </div>
+  <div *ngIf="viewMode===View.Tile" class="tile">
+    <app-tile-view (updateEmitter)="updateEmitter($event)" [currentItems]="currentItems"></app-tile-view>
+  </div>
+</div>
+
+<app-paginator
+  [currentPage]="currentPage"
+  [totalPages]="totalPages"
+  [totalItems]="totalItems"
+  [pageSize]="pageSize"
+  (pageSizeChangeEmit)="onPageSizeChange($event)"
+  (changePageEmit)="changePage($event)">
+</app-paginator>
+

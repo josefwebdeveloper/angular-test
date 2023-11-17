@@ -1,0 +1,12 @@
+<div class="event-container">
+  <div class="table-header">
+    <div class="header-item color">Color</div>
+    <div class="header-item name">Name</div>
+    <div class="header-item date">Create Date</div>
+    <div class="header-item update">Last Update</div>
+    <div class="header-item created">Created By</div>
+  </div>
+  <div *ngFor="let item of currentItems">
+    <app-list-event (click)="update(item)" [event]="item"/>
+  </div>
+</div>

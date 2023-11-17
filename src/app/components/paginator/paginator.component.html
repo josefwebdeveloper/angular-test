@@ -1,0 +1,12 @@
+<div class="paginator-container">
+  <div *ngIf="totalPages > 1">
+    <button class="prev" (click)="changePage(currentPage - 1)">&larr;</button>
+    {{ currentPage }} of {{ totalPages }} pages ({{ totalItems }} items)
+    <button class="next" (click)="changePage(currentPage + 1)">&rarr;</button>
+
+    <select [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChange(pageSize)">
+      <option *ngFor="let size of availablePageSizes" [value]="size">{{ size }}</option>
+    </select>
+  </div>
+
+</div>

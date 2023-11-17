@@ -1,0 +1,162 @@
+.close-icon-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  .mat-icon {
+    transition: 1s ease-in-out;
+    margin: 10px;
+
+    &:hover {
+      transform: rotate(180deg);
+      cursor: pointer;
+    }
+  }
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 46px;
+  height: calc(100% - 44px);
+
+  .title-container {
+    padding: 0 0 30px 0;
+    color: var(--grey-blue-darken);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  form {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    .form-content {
+      flex: 1 0 auto;
+
+    }
+
+    .actions {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  label {
+    margin-bottom: 9px;
+  }
+
+  .name-color-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .name-container {
+      width: 100%;
+      margin-right: 10px;
+    }
+
+    .color-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+    }
+  }
+
+
+  input[type="text"],
+  textarea,
+  select {
+    margin-top: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin-bottom: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 6px #00000029;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+
+    &::placeholder {
+      letter-spacing: 1;
+      font-style: italic;
+      color: black;
+      font-weight: 300;
+    }
+
+    &:focus {
+      border-color: #7da2a9;
+      outline: none;
+    }
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('/assets/dropdown-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+
+    option {
+      color: #333;
+    }
+  }
+
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #4cae4c;
+    }
+  }
+
+  .cancel {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: 1px solid rgba(black, 70%);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-transform: uppercase;
+  }
+
+}
+
+::ng-deep ngx-colors {
+  .preview {
+    box-shadow: unset !important;
+    padding: 0 !important;
+  }
+
+  .circle {
+    border-radius: 10% !important;
+    height: 30px !important;
+    width: 30px !important;
+  }
+}
+
+.invalid-feedback {
+  color: red;
+  font-size: 10px;
+}
+
+
+

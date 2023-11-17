@@ -1,0 +1,29 @@
+<div class="url-bar">
+  <input type="text" class="url-input" placeholder="URL" name="url">
+  <button type="submit" class="go-button">GO</button>
+</div>
+
+<div class="management-tool">
+  <div class="management-tool__text">Management Tool</div>
+  <div class="button-group" *ngIf="dashboardMode$ | async as dashboardMode">
+    <div
+      class="toggle-button tile-mode"
+      [class.active]="dashboardMode === View.Tile"
+      (click)="changeView(View.Tile)"
+    ></div>
+    <div
+      class="toggle-button list-mode"
+      [class.active]="dashboardMode === View.List"
+      (click)="changeView(View.List)"
+    ></div>
+    <div
+      class="add-button"
+      (click)="openDialog()"
+    ></div>
+  </div>
+</div>
+<div class="view-container">
+  <app-view *ngIf="events" (updateEvent)="openDialog($event)" [events]="events"/>
+</div>
+
+
